@@ -1,4 +1,4 @@
-Project with my Data Structure & Algorithms realization on TypeScript
+Project with my Data Structures & Algorithms realization on TypeScript
 
 You can run any file by
 
