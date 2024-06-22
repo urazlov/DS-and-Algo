@@ -200,11 +200,9 @@ list.append({ name: 'First' });
 list.append({ name: 'Second' });
 list.append({ name: 'Third' });
 list.preappend({ name: 'Null' });
-// list.remove((value) => value.name === 'First');
-// console.log(list.removeAt(3), 'removed');
-// list.insertAt({name: 'Inserted'}, 4)
-// console.log(list.get(0));
-// console.log(list.get(1));
-// console.log(list.get(2));
-// console.log(list.get(3));
-// console.log(list.get(4));
+list.insertAt({name: 'Inserted'}, 2)
+console.log(list.get(0));
+console.log(list.get(1));
+console.log(list.get(2));
+console.log(list.get(3));
+console.log(list.get(4));
