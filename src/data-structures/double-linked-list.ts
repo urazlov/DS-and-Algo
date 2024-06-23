@@ -3,12 +3,12 @@ interface LinkedList<T> {
 	 * Возвращает длинну списка.
 	 */
 	get length(): number;
-    /**
-     * Вставляет значение по индексу в список
-     * @param item Значение
-     * @param index Индекс
-     */
-	insertAt(item: T, index: number): void,
+	/**
+	 * Вставляет значение по индексу в список
+	 * @param item Значение
+	 * @param index Индекс
+	 */
+	insertAt(item: T, index: number): void;
 	/**
 	 * Удаляет элемент по указанному ключу
 	 * @param comparator функция сравнения, в которую передается какой либо ключ.
@@ -139,60 +139,60 @@ class NodeLinkedList<T> implements LinkedList<T> {
 		}
 
 		if (node) {
-            if (node.prev) {
-                node.prev.next = node.next;
-            } else {
-                this.head = node.next;
-            }
+			if (node.prev) {
+				node.prev.next = node.next;
+			} else {
+				this.head = node.next;
+			}
 
-            if (node.next) {
-                node.next.prev = node.prev;
-            } else {
-                this.tail = node.prev;
-            }
+			if (node.next) {
+				node.next.prev = node.prev;
+			} else {
+				this.tail = node.prev;
+			}
 
-            this._length--;
-            return node.value
+			this._length--;
+			return node.value;
 		}
 
 		return null;
 	}
 
-    insertAt(item: T, index: number): void {
-        if (index < 0 || index > this._length) {
-			throw "Index out of range"
+	insertAt(item: T, index: number): void {
+		if (index < 0 || index > this._length) {
+			throw 'Index out of range';
 		}
 
-        if (index === 0) {
-            this.preappend(item)
-            return
-        }
-        
-        if (index === this._length) {
-            this.append(item)
-            return
-        }
+		if (index === 0) {
+			this.preappend(item);
+			return;
+		}
 
-        let count = 0;
-        let node = this.head;
+		if (index === this._length) {
+			this.append(item);
+			return;
+		}
 
-        while (node && count < index) {
-            count++;
-            node = node.next;
-        }
+		let count = 0;
+		let node = this.head;
 
-        if (node) {
-            const newNode: NodeListItem<T> = {value: item, next: null, prev: null};
+		while (node && count < index) {
+			count++;
+			node = node.next;
+		}
 
-            newNode.next = node;
-            newNode.prev = node.prev;
-            node.prev!.next = newNode;
-            node.prev = newNode;
-            this._length++;
-        } else {
-            throw "This element doesn't exist"
-        }
-    }
+		if (node) {
+			const newNode: NodeListItem<T> = { value: item, next: null, prev: null };
+
+			newNode.next = node;
+			newNode.prev = node.prev;
+			node.prev!.next = newNode;
+			node.prev = newNode;
+			this._length++;
+		} else {
+			throw "This element doesn't exist";
+		}
+	}
 }
 
 const list = new NodeLinkedList<{ name: string }>();
@@ -200,7 +200,7 @@ list.append({ name: 'First' });
 list.append({ name: 'Second' });
 list.append({ name: 'Third' });
 list.preappend({ name: 'Null' });
-list.insertAt({name: 'Inserted'}, 2)
+list.insertAt({ name: 'Inserted' }, 2);
 console.log(list.get(0));
 console.log(list.get(1));
 console.log(list.get(2));
