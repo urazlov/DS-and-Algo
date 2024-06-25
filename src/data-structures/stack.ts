@@ -35,7 +35,7 @@ class StackBuilder<T> implements Stack<T> {
 	}
 	push(item: T): void {
 		const newNode: StackNode<T> = { value: item, prev: this.head };
-        this.head = newNode;
+		this.head = newNode;
 		this.length++;
 	}
 
